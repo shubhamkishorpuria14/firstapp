@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name new1App
+ * @name myFirstApp
  * @description
- * # new1App
+ * # myFirstApp
  *
  * Main module of the application.
  */
 angular
-  .module('new1App', [
+  .module('myFirstApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -24,20 +24,10 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/home', {
+      .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
-      })
-      .when('/myroute', {
-        templateUrl: 'views/myroute.html',
-        controller: 'MyrouteCtrl',
-        controllerAs: 'myroute'
-      })
-      .when('/my/route', {
-        templateUrl: 'views/myroute.html',
-        controller: 'MyrouteCtrl',
-        controllerAs: 'myroute'
       })
       .otherwise({
         redirectTo: '/'
