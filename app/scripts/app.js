@@ -19,13 +19,16 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
+      .when('/',{
+        templateUrl: 'views/home.html'
+      })
+      .when('/profile', {
+        templateUrl: 'views/profile-search.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
+      .when('/repository', {
+        templateUrl: 'views/repoSearch.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
