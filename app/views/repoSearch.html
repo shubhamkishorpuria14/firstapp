@@ -1,16 +1,46 @@
+<div ng-controller="AboutCtrl as my">
+     <center><h1><b>Github</b> Repository Search</h1></center>
 
-
- <center><h1><b>Github</b> Repository Search</h1></center>
-<div class="row">
-       <div class="col-md-12">
-           <form class="well">
-              <div class="form-group">
-                 <input type="text" class="form-control" placeholder="Enter github Repository..."  ng-model="user.name" name="username" >
-                 {{user.name}}<br/><center>
-                   <button ng-click="vm.fetchData(user.name)" class="btn btn-primary">search</button>
-                 </center> 
+        <div class="row">
+             <div class="col-md-12">
+                <form class="well">
+                    <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Enter github Repository..."  ng-model="repo.name" name="reponame" >
+                           <br/>
+                             <center>
+                                   <button ng-click="my.fetchRepo(repo.name)" class="btn btn-primary">search</button>
+                             </center> 
  
-              </div>
-           </form>
-        </div>
-    </div>
+                    </div>
+               </form>
+             </div>
+       </div>
+
+     
+
+       <div class="panel panel-default">
+          
+            <div class="panel-heading">
+                   <h3 class="panel-title">Repository {{ mydata.name }}{{ title }}</h3>
+            </div>
+    
+            <div class="panel-body">
+                <div >
+                   <div class="row">
+                        <div class="col-md-9" ng-repeat="repo in my.mydata.data.items">
+                            <ul>
+                              <h4>
+                                 <li>
+                                     <a target="_blank" href="{{repo.html_url}}">{{repo.full_name}}  </a>
+                                 </li>
+                              </h4>
+                                <p>{{repo.description}}</p>
+                            </ul>   
+                        </div>
+                   </div>
+                                      <hr>
+                </div>
+           </div>
+    
+       </div>
+</div>

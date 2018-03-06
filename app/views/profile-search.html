@@ -48,16 +48,15 @@
      </div>
     
      <div class="panel-body" ng-init="range=vm.repositories.data.length">
-      Repo name 1: {{ vm.repositories.data[0].name }}
-    <br/>
-      Repo name 2: {{ vm.repositories.data[1].name }}<br/>
-      Repo Name 3: 
-       {{ range }}
-         <div *ngFor="let repo of vm.repositories">
+     
+     
+         <div >
              <div class="row">
-                 <div class="col-md-9">
-                     <h4><a target="_blank" href="{{repo.html_url}}">{{ repo.name }}</a></h4>
-                     <p>{{repo.description}}</p>
+                 <div class="col-md-9" ng-repeat="repo in vm.repositories.data">
+                     <ul>
+                       <li><h4><a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></h4></li>
+                       <p>{{repo.description}}</p>
+                   </ul>
                  </div>
              </div>
             <hr>

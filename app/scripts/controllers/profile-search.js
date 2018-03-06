@@ -1,4 +1,5 @@
-'use strict';
+'use strict'
+
 
 
 
@@ -10,11 +11,11 @@ angular.module('myFirstApp')
         
 
         $http.get('https://api.github.com/users/' + user).then(function(res){
-          vm.header =user;
+        
           vm.data = res;
         });
         $http.get('https://api.github.com/users/' + user + '/repos').then(function(res){
-          vm.header =user;
+         
           vm.repositories = res;
         });
 
