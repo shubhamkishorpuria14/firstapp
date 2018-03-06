@@ -9,22 +9,29 @@
  */
 
 
-
 angular.module('myFirstApp')
-  .service('Myservice', function ($scope,$http) {
-
-        var my=function(user){
-        	 $http.get('https://api.github.com/users/' + user).then(function(res){
-          vm.header =user;
-          vm.data = res;
-        });
-        }
-
+    .service('profileservice', ['$http', function ($http) {
        
+     this.skp = function(){
+         return "shubham";
+     };
+      
+     var datainfo="";
+     
+     this.fetch = function(r){
+           return r;
+     };
+     
+     this.fetchData = function(user){
+                    $http.get('https://api.github.com/users/' + user).then(function(response){
+                          datainfo= response;
+                          return datainfo;
+                     });
+
+                };
+     
 
 
-
-      });
-
+    }]);
 
 

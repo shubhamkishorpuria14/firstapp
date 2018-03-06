@@ -8,22 +8,11 @@
  * Controller of the myFirstApp
  */
 angular.module('myFirstApp')
-  .controller('AboutCtrl', function ($scope,$http) {
+  .controller('AboutCtrl', ['routerservice', function (routerservice) {
     
 
       var my = this;  
-
-
-      my.fetchRepo = function(repo){
-          
-          my.title = repo ;   
-
-        $http.get('https://api.github.com/search/repositories?q=' + repo).then(function(d){
-          
-          my.mydata = d;
-        });
-
-
-
-      }
-  });
+      my.repoData = routerservice.fetchRepo('angular');
+      
+     
+  }]);

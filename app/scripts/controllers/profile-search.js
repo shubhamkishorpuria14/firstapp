@@ -3,25 +3,18 @@
 
 
 
-angular.module('myFirstApp')
-  .controller('MainCtrl', function ($scope,$http) {
-      var vm = this;
 
-      vm.fetchData = function(user){
+
+ angular.module('myFirstApp')
+    .controller('MainCtrl', ['profileservice', function (profileservice) {
+        var vm=this;
+       
+        vm.title = profileservice.skp();
+
+        vm.fetching = profileservice.fetch("kishorpuria");
+                
+        vm.fetchinfo = profileservice.fetchData("shubham");
         
 
-        $http.get('https://api.github.com/users/' + user).then(function(res){
-        
-          vm.data = res;
-        });
-        $http.get('https://api.github.com/users/' + user + '/repos').then(function(res){
-         
-          vm.repositories = res;
-        });
-
-
-
-      }
-     
-
-  });
+    }]);
+    
