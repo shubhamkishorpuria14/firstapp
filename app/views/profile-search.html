@@ -1,14 +1,15 @@
  <div ng-controller="MainCtrl as vm">
 
-     <center><h1><b>Github</b> User Search</h1></center>
+     <center><h1><b>Github</b> User Search   {{userDetail }}
+     </h1></center>
      <div class="row">
        <div class="col-md-12">
-           <form class="well">
+           <form class="well" ng-submit="fetchData(user.name)">
               <div class="form-group">
                  <input type="text" class="form-control" placeholder="Enter github username..."  ng-model="user.name" name="username" >
                  <br/><center>
-                   <button ng-click="vm.fetchData(user.name)" class="btn btn-primary">search</button>
-                 </center> 
+                   <button type="submit" class="btn btn-primary">search</button>
+                   </center> 
  
               </div>
            </form>
@@ -19,23 +20,23 @@
   <div *ngIf="user.name">
      <div class="panel panel-default">
         <div class="panel-heading">
-           <h3 class="panel-title">PROFILE: {{vm.data.data.login}}</h3>
+           <h3 class="panel-title">PROFILE: {{userDetail.login}}</h3>
         </div>
         <div class="panel-body">
            <div class="row">
                <div class="col-md-4 col-sm-4 col-xs-12">
-                   <img class="img-thumbnail" src="{{vm.data.data.avatar_url}}">
-                   <a class="btn btn-default btn-block" target="_blank" href="{{user.html_url}}">View Profile</a>
+                   <img class="img-thumbnail" src="{{userDetail.avatar_url}}">
+                   <a class="btn btn-default btn-block" target="_blank" href="{{userDetail.html_url}}">View Profile</a>
                </div>
 
                <div class="col-md-8 col-sm-8 col-xs-12">
                     <br/>
                     <ul class="list-group">
-                        <li class="list-group-item"><strong>Username: </strong>{{vm.data.data.login}}</li>
-                        <li class="list-group-item"><strong>Location: </strong>{{vm.data.data.location}}</li>
-                        <li class="list-group-item"><strong>Email: </strong>{{vm.data.data.email}}</li>
-                        <li class="list-group-item"><strong>Blog: </strong>{{vm.data.data.blog}}</li>
-                        <li class="list-group-item"><strong>Member Since: </strong>{{vm.data.data.created_at}}</li>
+                        <li class="list-group-item"><strong>Username: </strong>{{userDetail.login}}</li>
+                        <li class="list-group-item"><strong>Location: </strong>{{userDetail.location}}</li>
+                        <li class="list-group-item"><strong>Email: </strong>{{userDetail.email}}</li>
+                        <li class="list-group-item"><strong>Blog: </strong>{{userDetail.blog}}</li>
+                        <li class="list-group-item"><strong>Member Since: </strong>{{userDetail.created_at}}</li>
                     </ul>
                </div>
            </div>
@@ -52,7 +53,7 @@
      
          <div >
              <div class="row">
-                 <div class="col-md-9" ng-repeat="repo in vm.repositories.data">
+                 <div class="col-md-9" ng-repeat="repo in repoDetail">
                      <ul>
                        <li><h4><a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></h4></li>
                        <p>{{repo.description}}</p>

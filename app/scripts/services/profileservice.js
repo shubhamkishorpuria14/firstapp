@@ -9,22 +9,30 @@
  */
 
 
-
 angular.module('myFirstApp')
-  .service('Myservice', function ($scope,$http) {
+  .factory("demoFac", ['$http',function($http){  
+    var obj = {};
+    
+    obj.fetch = function(user){ 
+        return $http.get('https://api.github.com/users/' +user);
+    }
+   
+ return obj;
+ 
+   }])
+  .factory("repoFac", ['$http',function($http){ 
+       var obj = {};
+    
+     obj.fetchRepo= function(user){ 
+        return $http.get('https://api.github.com/users/' +user+ '/repos');
+    }
+   
+ return obj;
+ 
+   }])  	
 
-        var my=function(user){
-        	 $http.get('https://api.github.com/users/' + user).then(function(res){
-          vm.header =user;
-          vm.data = res;
-        });
-        }
+  
 
-       
-
-
-
-      });
 
 
 

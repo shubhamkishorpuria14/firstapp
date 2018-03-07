@@ -2,26 +2,19 @@
 
 
 
+angular.module('myFirstApp').controller('MainCtrl',function($scope,demoFac,repoFac){
+     $scope.fetchData = function(user){
+    demoFac.fetch(user).then(function(response){
+        $scope.userDetail = response.data;
+    });
 
-angular.module('myFirstApp')
-  .controller('MainCtrl', function ($scope,$http) {
-      var vm = this;
+    repoFac.fetchRepo(user).then(function(response){
+       $scope.repoDetail = response.data;
+    });
+    }
 
-      vm.fetchData = function(user){
-        
-
-        $http.get('https://api.github.com/users/' + user).then(function(res){
-        
-          vm.data = res;
-        });
-        $http.get('https://api.github.com/users/' + user + '/repos').then(function(res){
-         
-          vm.repositories = res;
-        });
+});
 
 
 
-      }
-     
 
-  });

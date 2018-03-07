@@ -7,23 +7,20 @@
  * # AboutCtrl
  * Controller of the myFirstApp
  */
-angular.module('myFirstApp')
-  .controller('AboutCtrl', function ($scope,$http) {
-    
-
-      var my = this;  
 
 
-      my.fetchRepo = function(repo){
-          
-          my.title = repo ;   
+angular.module('myFirstApp').controller('AboutCtrl',function($scope,demoFac){
+      
+       $scope.fetchData = function(repo){
+      
+                    demoFac.fetch(repo).then(function(response){
+                    $scope.userDetail = response.data;
+                 });
+    }
 
-        $http.get('https://api.github.com/search/repositories?q=' + repo).then(function(d){
-          
-          my.mydata = d;
-        });
+});
 
 
 
-      }
-  });
+
+
